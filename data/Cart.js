@@ -30,7 +30,7 @@ export function addToCart(productId){
       }
 };
 
-export function reomveFromCart(productId){
+export function removeFromCart(productId){
   const newCart = [];
 
   cart.forEach(cartItem => {
