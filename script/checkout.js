@@ -97,6 +97,9 @@ document.querySelector('.js-order-summary').innerHTML = cartSummaryHtml;
 
 document.querySelectorAll('.js-delete-link')
   .forEach((link) => {
-    const productId = link.dataset.productId;
-    reomveFromCart(productId);
+    link.addEventListener('click', () => {
+      const productId = link.dataset.productId;
+      reomveFromCart(productId);
+      console.log(cart);
+    });
   });
