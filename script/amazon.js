@@ -95,6 +95,6 @@ document.querySelectorAll('.js-add-to-cart')
       
       addToCart(productId);
       updateCartQuantity(); 
-      addedMessage(addedMessageTimeoutId, productId);
+      addedMessageAppearance(addedMessageTimeoutId, productId);
     });
 });
