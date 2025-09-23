@@ -10,12 +10,6 @@ export function updateCartQuantity(){
       if(cartQuantityEl){
         cartQuantityEl.innerHTML = cartQuantity;
       }
-
-    const headerElement = document.querySelector('.js-checkout-header');
-    if(headerElement){
-      headerElement.innerHTML = `Checkout (<a class="return-to-home-link"
-            href="amazon.html">${cartQuantity} items</a>)`;   
-      }
-
+      
       return cartQuantity;
 };

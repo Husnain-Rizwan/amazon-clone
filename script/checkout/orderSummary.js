@@ -5,6 +5,7 @@ import { updateCartQuantity } from "../utils/cartQuantity.js";
 import dayjs from "https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js";
 import { deliveryOptions, getDeliveryOption } from "../../data/deliveryOptions.js";
 import { renderPaymentSummary } from "./paymentSummary.js";
+import { renderCheckoutHeader } from "./checkoutHeader.js";
 
 
 
@@ -125,6 +126,7 @@ document.querySelectorAll('.js-delete-link')
 
       updateCartQuantity();
       renderPaymentSummary();
+      renderCheckoutHeader();
     });
   });
 
@@ -150,12 +152,14 @@ document.querySelectorAll('.js-save-quantity-link')
     link.addEventListener('click', () => {
       handleUpdateQuantity(productId, quantityInput);
       renderPaymentSummary();
+      renderCheckoutHeader();
     });
 
     quantityInput.addEventListener('keydown', (event) => {
       if (event.key === 'Enter') {
         handleUpdateQuantity(productId, quantityInput);
         renderPaymentSummary();
+        renderCheckoutHeader();
       }
     });
 });
