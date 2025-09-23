@@ -16,4 +16,6 @@ export function updateCartQuantity(){
       headerElement.innerHTML = `Checkout (<a class="return-to-home-link"
             href="amazon.html">${cartQuantity} items</a>)`;   
       }
+
+      return cartQuantity;
 };
