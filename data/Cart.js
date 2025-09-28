@@ -36,14 +36,14 @@ export function addToCart(productId){
           matchingItem = cartItem;
       });
       
-      // const quantity = quantitySelector(productId);
+      const quantity = quantitySelector(productId);
 
       if(matchingItem){
-        matchingItem.quantity += 1;
+        matchingItem.quantity += quantity;
       }else {
         cart.push({
         productId,
-        quantity: 1,
+        quantity,
         deliveryOptionId: '1'
       });
       }
