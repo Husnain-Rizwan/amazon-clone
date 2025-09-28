@@ -1,5 +1,11 @@
-export let cart = JSON.parse(localStorage.getItem('cart'));
+import { quantitySelector } from "../script/utils/quantitySelector.js";
 
+export let cart;
+
+loadFromStorage();
+
+export function loadFromStorage(){
+  cart = JSON.parse(localStorage.getItem('cart'));
 
 if(!cart){
   cart = [
@@ -15,6 +21,7 @@ if(!cart){
   }  
 ];
 };
+}
 
 
 export function saveToStorage(){
@@ -29,18 +36,18 @@ export function addToCart(productId){
           matchingItem = cartItem;
       });
       
-      const valueElement = document.querySelector(`.js-quantity-selector-${productId}`);
-      const quantity = Number(valueElement.value);
+      // const quantity = quantitySelector(productId);
 
       if(matchingItem){
-        matchingItem.quantity += quantity;
+        matchingItem.quantity += 1;
       }else {
         cart.push({
         productId,
-        quantity,
+        quantity: 1,
         deliveryOptionId: '1'
       });
       }
+
       saveToStorage();
 };
 
@@ -83,3 +90,4 @@ export function updatedeliveryOption(productId, deliveryOptionId){
 
     saveToStorage();
 }
+

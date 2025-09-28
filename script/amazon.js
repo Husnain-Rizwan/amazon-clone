@@ -2,6 +2,7 @@ import {products} from "../data/products.js";
 import {cart, addToCart} from "../data/Cart.js";
 import { formatCurrency } from "./utils/money.js";
 import { updateCartQuantity } from "./utils/cartQuantity.js";
+import { quantitySelector } from "./utils/quantitySelector.js";
 
 
 let productsHTML = '';
@@ -85,6 +86,7 @@ document.querySelectorAll('.js-add-to-cart')
     button.addEventListener('click', () => {
       const productId = button.dataset.productId;
       
+      quantitySelector(productId)
       addToCart(productId);
       updateCartQuantity(); 
       addedMessageAppearance(addedMessageTimeoutId, productId);
