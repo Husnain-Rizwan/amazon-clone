@@ -22,14 +22,14 @@ productsHTML += `
 
         <div class="product-rating-container">
         <img class="product-rating-stars"
-            src="images/ratings/rating-${product.rating.stars * 10}.png">
+            src="${product.getstarUrl()}">
         <div class="product-rating-count link-primary">
             ${product.rating.count}
         </div>
         </div>
 
         <div class="product-price">
-        $${formatCurrency(product.priceCents)}  
+          ${product.getmoney()} 
         </div>
 
         <div class="product-quantity-container">
