@@ -1,4 +1,5 @@
 import { quantitySelector } from "../script/utils/quantitySelector.js";
+import { checkDeliveryOptionId } from './deliveryOptions.js';
 
 export let cart;
 
@@ -36,14 +37,14 @@ export function addToCart(productId){
           matchingItem = cartItem;
       });
       
-      const quantity = quantitySelector(productId);
+      // const quantity = quantitySelector(productId);
 
       if(matchingItem){
-        matchingItem.quantity += quantity;
+        matchingItem.quantity += 1;
       }else {
         cart.push({
         productId,
-        quantity,
+        quantity: 1,
         deliveryOptionId: '1'
       });
       }
@@ -82,9 +83,14 @@ export function updatedeliveryOption(productId, deliveryOptionId){
   let matchingItem;
       
       cart.forEach((cartItem) => {
-        if(productId === cartItem.productId)
+        if(productId === cartItem.productId){
           matchingItem = cartItem;
+        }
       });
+
+      if (!matchingItem || !checkDeliveryOptionId(deliveryOptionId)) {
+        return;
+      }
 
     matchingItem.deliveryOptionId = deliveryOptionId;
 

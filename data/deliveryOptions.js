@@ -47,3 +47,15 @@ export function calculateDeliveryDate(deliveryOption) {
   const dateString = deliveryDate.format('dddd, MMMM D');
   return dateString;
 }
+
+export function checkDeliveryOptionId(deliveryOptionId){
+  let found = false;
+
+  deliveryOptions.forEach((options) => {
+    if(options.id === deliveryOptionId){
+      found = true;
+    }
+  });
+
+  return found;
+}
