@@ -20,9 +20,7 @@ if(!cart){
     quantity: 1,
     deliveryOptionId: '2'
   }  
-];
-};
-}
+];}}
 
 
 export function saveToStorage(){
