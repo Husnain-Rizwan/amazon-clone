@@ -11,7 +11,7 @@ export function getProduct(productId){
     return matchingProduct;
 }
 
-class Product {
+export class Product {
   id;
   image;
   name;
@@ -39,7 +39,7 @@ class Product {
   }
 }
 
-class Clothing extends Product {
+export class Clothing extends Product {
     sizeChartLink;
 
     constructor(productDetails){
@@ -52,7 +52,26 @@ class Clothing extends Product {
       `;
     }
  }
- export let products = [];
+
+export class Appliance extends Product {
+  instructionsLink;
+  warrantyLink;
+
+  constructor(productDetails){
+    super(productDetails);
+    this.instructionsLink = productDetails.instructionsLink;
+    this.warrantyLink = productDetails.warrantyLink;
+  }
+
+  extendsInfoHTML(){
+    return `
+    <a href="${this.instructionsLink}" target="_blank">Instructions</a>
+    <a href="${this.warrantyLink}" target="_blank">Warranty</a>
+    `;
+  }
+}
+
+export let products = [];
 
 export function loadProductsFetch(){
   const promise = fetch(
@@ -63,6 +82,13 @@ export function loadProductsFetch(){
     products = productsData.map((productDetails) => {
       if(productDetails.type === 'clothing'){
         return new Clothing(productDetails);
+      }else if(productDetails.keywords.includes('appliances')) {
+        productDetails.instructionsLink = 
+        'images/appliance-instructions.png';
+        productDetails.warrantyLink = 
+        'images/appliance-warranty.png';
+
+        return new Appliance(productDetails);
       }
         return new Product(productDetails);
       });
@@ -73,30 +99,24 @@ export function loadProductsFetch(){
   return promise;
 }
 
-/*
-loadProductsFetch().then(() => {
-  console.log('next step')
-});
-*/
 
+// export function loadProducts(fun){
+//   const xhr = new XMLHttpRequest();
 
-export function loadProducts(fun){
-  const xhr = new XMLHttpRequest();
+//   xhr.addEventListener('load', () => {
+//       products = JSON.parse(xhr.response).map((productDetails) => {
+//   if(productDetails.type === 'clothing'){
+//     return new Clothing(productDetails);
+//   }
+//     return new Product(productDetails);
+//   });
 
-  xhr.addEventListener('load', () => {
-      products = JSON.parse(xhr.response).map((productDetails) => {
-  if(productDetails.type === 'clothing'){
-    return new Clothing(productDetails);
-  }
-    return new Product(productDetails);
-  });
+//   fun();
+//   });
 
-  fun();
-  });
-
-  xhr.open('GET', 'https://supersimplebackend.dev/products');
-  xhr.send();
-}
+//   xhr.open('GET', 'https://supersimplebackend.dev/products');
+//   xhr.send();
+// }
 
 
 /*

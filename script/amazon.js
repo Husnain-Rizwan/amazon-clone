@@ -3,7 +3,7 @@ import {cart, addToCart} from "../data/Cart.js";
 import { formatCurrency } from "./utils/money.js";
 import { updateCartQuantity } from "./utils/cartQuantity.js";
 import { quantitySelector } from "./utils/quantitySelector.js";
-import {loadProducts, loadProductsFetch} from '../data/products.js'
+import { loadProductsFetch} from '../data/products.js'
 
 // loadProducts(renderProductsGrid);
 loadProductsFetch().then(() => {
