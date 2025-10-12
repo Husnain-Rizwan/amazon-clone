@@ -1,4 +1,4 @@
-import { cart } from '../../data/Cart.js';
+import { cart, removeFromCart } from '../../data/Cart.js';
 import { getProduct } from '../../data/products.js';
 import { formatCurrency } from '../utils/money.js';
 import { getDeliveryOption } from '../../data/deliveryOptions.js';
@@ -87,6 +87,11 @@ document.querySelector('.js-place-order')
     const order =await response.json();
     addOrder(order);
 
+    order.products.forEach(productDetails => {
+      const product = getProduct(productDetails.productId);
+      removeFromCart(product.id);
+    })
+    
     window.location.href='orders.html';
 });
 }
