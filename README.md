@@ -1,0 +1,1 @@
+Developed a fully functional Amazon front-end clone using HTML, CSS, and JavaScript. Implemented product listing, add-to-cart functionality, and dynamic cart calculations including total payment summary. Enabled order tracking and placing orders directly from the cart, creating an interactive, user-friendly shopping experience that mimics real e-commerce functionality.
